@@ -8,6 +8,7 @@ export default {
       red: "#E14658",
       dark: "#13131A",
       grey: "#252D3C",
+      "dark-third":"#292932",
       "dark-second": "#1C1C24",
       white: "#ffffff",
     },
@@ -38,10 +39,13 @@ export default {
           transition: "ease 0.3s all",
           fontWeight: "600",
           "&:hover": {
-            backgroundColor: "transparent",
-            color: "#E14658",
+            backgroundColor: "#b12435",
+            borderColor: "#b12435",
           },
         },
+        ".back-transparent": {
+          background:"none"
+        }
       });
     }),
   ],
