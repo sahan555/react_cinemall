@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 const apiKey = "3785d7ed";
-const apiUrl = "/api";
+const apiUrl = "http://www.omdbapi.com";
 
 const Search = ({name,type}) => {
     console.log(type)

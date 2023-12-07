@@ -6,7 +6,7 @@ export default defineConfig({
   server: {
     proxy:{
       '/api': {
-        target: 'https://www.omdbapi.com',
+        target: 'http://www.omdbapi.com',
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/api/, '')
       }
