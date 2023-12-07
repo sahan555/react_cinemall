@@ -3,7 +3,14 @@ import { Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
+const isConfirmationAllowed = () => {
+  const storedData = localStorage.getItem("confirmationData");
+  const parsedData = storedData ? JSON.parse(storedData) : {};
+  return parsedData && Object.keys(parsedData).length > 0;
+};
 const Confirmation = () => {
+  const navigate = useNavigate();
+
   // State variable to store parsed data
   const [confirmationData, setConfirmationData] = useState({});
 
@@ -14,31 +21,26 @@ const Confirmation = () => {
     setConfirmationData(parsedData);
   }, []); // Empty dependency array to run the effect only once
 
-  const vatPrice = () => {
-    return (parseFloat(confirmationData.totalPrice) * 0.13).toFixed(2);
-  };
-  console.log(confirmationData.totalPrice);
-  console.log(vatPrice());
-  const discountPrice = () => {
-    return (parseFloat(confirmationData.totalPrice) * 0).toFixed(2);
-  };
-  console.log(discountPrice());
+  // Check confirmationData after the state has been updated
+  useEffect(() => {
+    if (!isConfirmationAllowed()) {
+      navigate("/");
+    }
+  }, [navigate]);
+
   const finalTotal = () => {
     return (
       parseFloat(confirmationData.totalPrice) +
-      parseFloat(vatPrice()) +
-      parseFloat(discountPrice())
+      parseFloat(confirmationData.vatPrice) +
+      parseFloat(confirmationData.discountPrice)
     ).toFixed(2);
   };
-
-  console.log(finalTotal());
-  const navigate = useNavigate();
 
   const initialValues = {
     name: "",
     email: "",
     address: "",
-    Country: "",
+    country: "",
     state: "",
     city: "",
     zipcode: "",
@@ -54,12 +56,13 @@ const Confirmation = () => {
 
   const handleFormSubmit = (formData) => {
     // Combine form data with calculation data
-    const calculationData = JSON.parse(
-      localStorage.getItem("confirmationData"),
-    );
-
+    const ticketData = JSON.parse(localStorage.getItem("confirmationData"));
+    const additionalData = {
+      finalTotal: finalTotal(),
+      // Add other data as needed
+    };
     // Navigate to the final confirmation page and pass formData and calculationData as props
-    navigate("/ticketdetail", { state: { formData, calculationData } });
+    navigate("/ticketdetail", { state: { formData, ticketData,additionalData} });
   };
 
   return (
@@ -92,6 +95,7 @@ const Confirmation = () => {
           Order Confirmation
         </h1>
         <Formik
+          enableReinitialize
           initialValues={initialValues}
           validationSchema={validationSchema}
           onSubmit={(values, { setSubmitting }) => {
@@ -100,7 +104,7 @@ const Confirmation = () => {
           }}
         >
           <Form className="confirm-form">
-            <div className="movies-wrapper flex space-x-8 max-sm:flex-wrap items-baseline">
+            <div className="movies-wrapper flex items-baseline space-x-8 max-sm:flex-wrap">
               <div className="order-details w-4/6 rounded-lg border border-grey bg-dark-second p-6 ">
                 <h3 className="text-xl">Information</h3>
 
@@ -182,7 +186,7 @@ const Confirmation = () => {
                   </div>
                 </div>
               </div>
-              <div className=" w-2/6 bg-dark-second p-6 border border-grey rounded-lg">
+              <div className=" w-2/6 rounded-lg border border-grey bg-dark-second p-6">
                 <h3 className="pb-4 text-2xl font-semibold capitalize">
                   Checkout Summary
                 </h3>
@@ -213,12 +217,14 @@ const Confirmation = () => {
                     </p>
                     <p className="text-text-dark flex w-full items-center justify-between text-sm">
                       <span>Tax(13 %)</span>
-                      <b className="font-semibold  text-white">${vatPrice()}</b>
+                      <b className="font-semibold  text-white">
+                        ${confirmationData.vatPrice}
+                      </b>
                     </p>
                     <p className="text-text-dark flex w-full items-center justify-between text-sm">
                       <span>Discount(0 %)</span>
                       <b className="font-semibold  text-white">
-                        ${discountPrice()}
+                        ${confirmationData.discountPrice}
                       </b>
                     </p>
                   </li>
@@ -234,7 +240,9 @@ const Confirmation = () => {
                     </p>
                   </li>
                   <li>
-                    <button type="submit" className="btn-red w-full">Confirm & Pay</button>
+                    <button type="submit" className="btn-red w-full">
+                      Confirm & Pay
+                    </button>
                   </li>
                 </ul>
               </div>

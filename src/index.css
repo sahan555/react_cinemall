@@ -39,8 +39,8 @@
     font-style: normal;
     font-weight: 600;
   }
-  .breadcrumbs{
-    border-top: 1px solid #252D3C;
+  .breadcrumbs {
+    border-top: 1px solid #252d3c;
   }
   .breadcrumbs ul li {
     color: #97abc0;
@@ -49,23 +49,83 @@
     content: "/";
     margin: 0 8px;
   }
-  .movies-wrapper label{
+  .movies-wrapper label {
     font-size: 16px;
     margin: 20px 0 8px 0;
     display: block;
   }
-  .confirm-form .movies-wrapper  input,
-  .confirm-form .movies-wrapper select{
+  .confirm-form .movies-wrapper input,
+  .confirm-form .movies-wrapper select {
     border-radius: 6px;
     background: transparent;
-    border: 1px solid #252D3C;
+    border: 1px solid #252d3c;
     padding: 12px 16px;
     width: 100%;
     font-size: 14px;
   }
   .confirm-form .movies-wrapper select option {
     background: rgba(0, 0, 0, 0.9);
-  color: #fff;
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  }
+  .pdf-ticket {
+    background: #f7f8f9;
+  }
+  .pdf-ticket .invoice-wrapper li {
+    color: #556987;
+    /* Body */
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+  }
+  .pdf-ticket .invoice-wrapper li:not(:first-child) {
+    margin-top: 10px;
+  }
+  .pdf-ticket .table-wrapper {
+    border-color: #d5dae1;
+    overflow: hidden;
+    margin-top: 30px;
+    background: #ffffff;
+  }
+  .pdf-ticket thead {
+    text-align: left;
+    color: #556987;
+    font-size: 14px;
+  }
+  .pdf-ticket th {
+    background: #e5e7e9;
+  }
+  .pdf-ticket th,
+  .pdf-ticket td {
+    font-weight: 400;
+    padding: 8px;
+    font-size: 14px;
+  }
+  .pdf-ticket tbody tr {
+    border-color: #d5dae1;
+  }
+  .pdf-ticket .ticket-box .boxed {
+    position: relative;
+  }
+  .pdf-ticket .ticket-box .boxed::before {
+    top: -11px;
+    content: "";
+    background-image: url("cut.svg");
+    width: 24px;
+    position: absolute;
+    height: 24px;
+  }
+  .pdf-ticket .ticket-box .boxed::after {
+    top: -1px;
+    right: 0;
+    content: "";
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='4%2c 20' stroke-dashoffset='0' stroke-linecap='square'/%3e%3c/svg%3e");
+    width: calc(100% - 24px);
+    position: absolute;
+    height: 2px;
+  }
+  .pdf-ticket .ticket-box .boxed > div {
+    border-color: #d5dae1;
+    border-radius: 4px;
   }
 }

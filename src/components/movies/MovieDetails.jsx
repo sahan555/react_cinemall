@@ -53,10 +53,19 @@ const MovieDetails = () => {
     return basePrice * ticketQuantity;
   };
 
+
   const navigate = useNavigate();
 
   const handleProceedToConfirmation = () => {
+    const vatPrice = () => {
+      return (parseFloat(calculateTotalPrice()) * 0.13).toFixed(2);
+    };
+    const discountPrice = () => {
+      return (parseFloat(calculateTotalPrice()) * 0).toFixed(2);
+    };
     const totalPrice = calculateTotalPrice();
+    const vat = vatPrice();
+    const discount= discountPrice();
     const dataToStore = {
       totalPrice: totalPrice,
       quantity: ticketQuantity,
@@ -64,7 +73,10 @@ const MovieDetails = () => {
       type: movie.Type,
       name: movie.Title,
       id: movie.imdbID,
-      location:movie.Country,
+      location: movie.Country,
+      vatPrice: vat,
+      discountPrice: discount,
+      poster:movie.Poster,
     };
     localStorage.setItem("confirmationData", JSON.stringify(dataToStore));
     // Use navigate to go to the confirmation page
