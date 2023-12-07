@@ -11,7 +11,7 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`, {
+        const response = await fetch(`https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`, {
           mode: "cors",
           method: "GET",
           headers: {
