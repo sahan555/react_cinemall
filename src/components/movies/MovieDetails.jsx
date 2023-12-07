@@ -12,7 +12,7 @@ const MovieDetails = () => {
     const fetchMovieDetails = async () => {
       try {
         const response = await fetch(
-          `/api/?i=${id}&apikey=${apiKey}`,
+          `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`,
         );
         const json = await response.json();
         setMovie(json);
