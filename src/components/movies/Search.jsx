@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 const apiKey = "3785d7ed";
-const apiUrl = "https://www.omdbapi.com/";
+// const apiUrl = "/api/";
 
 const Search = ({name,type}) => {
     console.log(type)
   const [data, setData] = useState(null);
-    const url = `${apiUrl}?s=${name}&apikey=${apiKey}&sort_by=release_date&type=${type}`;
+    const url = `/api/?s=${name}&apikey=${apiKey}&sort_by=release_date&type=${type}`;
   const fetchData = async () => {
     const response = await fetch(url);
     const json = await response.json();
