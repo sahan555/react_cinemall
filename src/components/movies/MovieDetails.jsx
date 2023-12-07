@@ -61,6 +61,10 @@ const MovieDetails = () => {
       totalPrice: totalPrice,
       quantity: ticketQuantity,
       basePrice: basePrice,
+      type: movie.Type,
+      name: movie.Title,
+      id: movie.imdbID,
+      location:movie.Country,
     };
     localStorage.setItem("confirmationData", JSON.stringify(dataToStore));
     // Use navigate to go to the confirmation page
@@ -72,84 +76,90 @@ const MovieDetails = () => {
 
   return (
     <>
-      <div className="movies-wrapper gap- gap-y- grid grid-cols-4 place-content-between">
-        <div className="movies-box" key={movie.imdbID}>
-          <figure className="relative mb-6 h-[320px] overflow-hidden rounded-xl">
-            <img
-              className="h-full w-full object-cover object-center"
-              src={movie.Poster}
-              alt={movie.Title}
-            />
-            <figcaption className="absolute right-2 top-2 rounded-md bg-dark bg-opacity-80 px-3 py-2 font-medium capitalize">
-              {movie.Type}
-            </figcaption>
-          </figure>
-          <h1 className="mb-2 self-stretch text-lg font-semibold">
-            {movie.Title}
-          </h1>
-          <ul className="flex flex-wrap">
-            <li className="list-item text-xs ">{movie.Year}</li>
-          </ul>
-        </div>
-        <div className="col-start-3 col-end-5 ml-auto w-full max-w-md bg-dark-second p-6">
-          <h3 className="pb-4 text-2xl font-semibold capitalize">
-            {movie.Type} Details
-          </h3>
-          <ul>
-            <li>
-              <MdOutlineDateRange />
-              <div className="">
-                <p className="dim-color">Date and Runtime</p>
-                <h5>
-                  {movie.Released} , {movie.Runtime}
-                </h5>
-              </div>
-            </li>
-            <li>
-              <IoLocationOutline />
-              <div className="">
-                <p className="dim-color">Location</p>
-                <h5>{movie.Country}</h5>
-              </div>
-            </li>
-            <li className="!block">
-              <h3 className="text-2xl font-semibold capitalize ">
-                Selected tickets
-              </h3>
-              <div className="ticket-wrapper my-6 flex items-center justify-between">
-                <div>
-                  <p className="dim-color">{ticketQuantity}x Ticket(s)</p>
-                  <h4>USD {basePrice}</h4>
+      <div className="container mx-auto">
+        <div className="movies-wrapper gap- gap-y- grid grid-cols-4 place-content-between py-14">
+          <div className="movies-box" key={movie.imdbID}>
+            <figure className="relative mb-6 h-[320px] overflow-hidden rounded-xl">
+              <img
+                className="h-full w-full object-cover object-center"
+                src={movie.Poster}
+                alt={movie.Title}
+              />
+              <figcaption className="absolute right-2 top-2 rounded-md bg-dark bg-opacity-80 px-3 py-2 font-medium capitalize">
+                {movie.Type}
+              </figcaption>
+            </figure>
+            <h1 className="mb-2 self-stretch text-lg font-semibold">
+              {movie.Title}
+            </h1>
+            <ul className="flex flex-wrap">
+              <li className="list-item text-xs ">{movie.Year}</li>
+            </ul>
+          </div>
+          <div className="col-start-3 col-end-5 ml-auto w-full max-w-md bg-dark-second p-6">
+            <h3 className="pb-4 text-2xl font-semibold capitalize">
+              {movie.Type} Details
+            </h3>
+            <ul className="detail-box">
+              <li>
+                <MdOutlineDateRange />
+                <div className="">
+                  <p className="dim-color">Date and Runtime</p>
+                  <h5>
+                    {movie.Released} , {movie.Runtime}
+                  </h5>
                 </div>
-                <div className="ticket-counter">
-                  <button
-                    className="bg-dark-third rounded-md px-2 ease-in hover:bg-red"
-                    onClick={() => handleTicketAdjustment(-1)}
-                  >
-                    -
-                  </button>
-                  <input
-                    className="back-transparent pointer-events-none w-10 px-3 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
-                    type="number"
-                    id="ticketQuantity"
-                    value={ticketQuantity}
-                    min={1}
-                    max={12}
-                    onChange={handleTicketChange}
-                  />
-                  <button
-                    className="bg-dark-third rounded-md px-2 ease-in hover:bg-red"
-                    onClick={() => handleTicketAdjustment(+1)}
-                  >
-                    +
-                  </button>
+              </li>
+              <li>
+                <IoLocationOutline />
+                <div className="">
+                  <p className="dim-color">Location</p>
+                  <h5>{movie.Country}</h5>
                 </div>
-              </div>
-              <button type="submit" className="btn-red w-full" onClick={handleProceedToConfirmation}>
-                Check out for ${calculateTotalPrice()}
-              </button>
-            </li>
-          </ul>
+              </li>
+              <li className="!block">
+                <h3 className="text-2xl font-semibold capitalize ">
+                  Selected tickets
+                </h3>
+                <div className="ticket-wrapper my-6 flex items-center justify-between">
+                  <div>
+                    <p className="dim-color">{ticketQuantity}x Ticket(s)</p>
+                    <h4>USD {basePrice}</h4>
+                  </div>
+                  <div className="ticket-counter">
+                    <button
+                      className="rounded-md bg-dark-third px-2 ease-in hover:bg-red"
+                      onClick={() => handleTicketAdjustment(-1)}
+                    >
+                      -
+                    </button>
+                    <input
+                      className="back-transparent pointer-events-none w-10 px-3 text-center [appearance:textfield] [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+                      type="number"
+                      id="ticketQuantity"
+                      value={ticketQuantity}
+                      min={1}
+                      max={12}
+                      onChange={handleTicketChange}
+                    />
+                    <button
+                      className="rounded-md bg-dark-third px-2 ease-in hover:bg-red"
+                      onClick={() => handleTicketAdjustment(+1)}
+                    >
+                      +
+                    </button>
+                  </div>
+                </div>
+                <button
+                  type="submit"
+                  className="btn-red w-full"
+                  onClick={handleProceedToConfirmation}
+                >
+                  Check out for ${calculateTotalPrice()}
+                </button>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </>

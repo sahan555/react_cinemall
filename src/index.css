@@ -9,14 +9,17 @@
 }
 @layer components {
   /* This won't be included in your compiled CSS unless you actually use it */
-  .movies-wrapper ul li {
+  .movies-wrapper .detail-box li {
     border-top: 1px solid #252d3c;
     padding: 24px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
   }
-  .movies-wrapper ul li svg {
+  .movies-wrapper .detail-box li:last-child {
+    padding-bottom: 0;
+  }
+  .movies-wrapper .detail-box li svg {
     background-color: #292932;
     border-radius: 50%;
     width: 48px;
@@ -35,5 +38,34 @@
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
+  }
+  .breadcrumbs{
+    border-top: 1px solid #252D3C;
+  }
+  .breadcrumbs ul li {
+    color: #97abc0;
+  }
+  .breadcrumbs ul li:not(:first-child)::before {
+    content: "/";
+    margin: 0 8px;
+  }
+  .movies-wrapper label{
+    font-size: 16px;
+    margin: 20px 0 8px 0;
+    display: block;
+  }
+  .confirm-form .movies-wrapper  input,
+  .confirm-form .movies-wrapper select{
+    border-radius: 6px;
+    background: transparent;
+    border: 1px solid #252D3C;
+    padding: 12px 16px;
+    width: 100%;
+    font-size: 14px;
+  }
+  .confirm-form .movies-wrapper select option {
+    background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
   }
 }

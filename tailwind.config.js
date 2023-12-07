@@ -11,6 +11,7 @@ export default {
       "dark-third":"#292932",
       "dark-second": "#1C1C24",
       white: "#ffffff",
+      "text-dark":"#97ABC0"
     },
     extend: {},
   },

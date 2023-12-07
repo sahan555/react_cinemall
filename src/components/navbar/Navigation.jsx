@@ -12,7 +12,7 @@ const Navigation = () => {
     },
     {
       name: "Movies",
-      link: "/movies",
+      link: "/movie",
     },
   ];
   return (

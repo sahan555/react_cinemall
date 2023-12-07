@@ -2,10 +2,12 @@ import Search from "./movies/Search";
 
 const Series = () => {
   return (
-    <div>
-          <Search name="x-men" type="series"/>
+    <div className="container mx-auto">
+      <div className="py-14">
+        <Search name="x-men" type="series" />
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Series
+export default Series;
