@@ -15,8 +15,7 @@ const MovieDetails = () => {
           mode: "cors",
           method: "GET",
           headers: {
-            "Access-Control-Allow-Origin": "*",
-            "cache-control": "no-cache",
+            "Access-Control-Allow-Origin": "*"
           },
         });
         const json = await response.json();

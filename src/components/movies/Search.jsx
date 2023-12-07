@@ -12,8 +12,7 @@ const Search = ({name,type}) => {
       mode: "cors",
       method:"GET",
       headers: {
-        "Access-Control-Allow-Origin": "*",
-      stat  "cache-control": "no-cache",
+        "Access-Control-Allow-Origin": "*"
       },
     });
     const json = await response.json();
