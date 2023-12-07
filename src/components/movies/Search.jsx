@@ -1,14 +1,21 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
 const apiKey = "3785d7ed";
-// const apiUrl = "http://www.omdbapi.com";
+const apiUrl = "/api";
 
 const Search = ({name,type}) => {
     console.log(type)
   const [data, setData] = useState(null);
-    const url = `http://www.omdbapi.com/?s=${name}&apikey=${apiKey}&sort_by=release_date&type=${type}`;
+    const url = `${apiUrl}/?s=${name}&apikey=${apiKey}&sort_by=release_date&type=${type}`;
   const fetchData = async () => {
-    const response = await fetch(url);
+    const response = await fetch(url,{
+      mode: "cors",
+      method:"GET",
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+      stat  "cache-control": "no-cache",
+      },
+    });
     const json = await response.json();
     console.log(json);
     setData(json.Search);

@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "proxy":"http://www.omdbapi.com",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -37,6 +36,6 @@
     "prettier-plugin-tailwindcss": "^0.5.7",
     "tailwindcss": "^3.3.6",
     "vite": "^5.0.0"
-  }
-  
+  },
+  "proxy": "http://localhost:8800"
 }

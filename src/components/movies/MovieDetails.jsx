@@ -11,9 +11,14 @@ const MovieDetails = () => {
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(
-          `http://www.omdbapi.com/?i=${id}&apikey=${apiKey}`,
-        );
+        const response = await fetch(`/api/?i=${id}&apikey=${apiKey}`, {
+          mode: "cors",
+          method: "GET",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "cache-control": "no-cache",
+          },
+        });
         const json = await response.json();
         setMovie(json);
       } catch (error) {
@@ -53,7 +58,6 @@ const MovieDetails = () => {
     return basePrice * ticketQuantity;
   };
 
-
   const navigate = useNavigate();
 
   const handleProceedToConfirmation = () => {
@@ -65,7 +69,7 @@ const MovieDetails = () => {
     };
     const totalPrice = calculateTotalPrice();
     const vat = vatPrice();
-    const discount= discountPrice();
+    const discount = discountPrice();
     const dataToStore = {
       totalPrice: totalPrice,
       quantity: ticketQuantity,
@@ -76,7 +80,7 @@ const MovieDetails = () => {
       location: movie.Country,
       vatPrice: vat,
       discountPrice: discount,
-      poster:movie.Poster,
+      poster: movie.Poster,
     };
     localStorage.setItem("confirmationData", JSON.stringify(dataToStore));
     // Use navigate to go to the confirmation page
