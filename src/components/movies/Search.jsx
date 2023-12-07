@@ -25,7 +25,7 @@ const Search = ({name,type}) => {
         {data?.map((data) => (
           <div className="movies-box" key={data.imdbID}>
             <Link to={`/details/${data.imdbID}`}>
-              <figure className="relative mb-6 h-[320px] overflow-hidden rounded-xl">
+              <figure className="relative mb-6 h-[320px] overflow-hidden rounded-xl hover:scale-95 transition-all ease-in-out">
                 <img
                   className="h-full w-full object-cover object-center"
                   src={data.Poster}
