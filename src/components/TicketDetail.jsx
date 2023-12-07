@@ -161,7 +161,7 @@ const TicketDetail = () => {
           )}
         </ul>
       </div>
-      <div className="fixed bottom-[15%] right-3">
+      <div className="fixed bottom-[5%] right-[15%]">
         <button
           className="btn-red"
           onClick={downloadPdf}
