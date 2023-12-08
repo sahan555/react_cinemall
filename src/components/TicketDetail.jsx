@@ -59,14 +59,14 @@ const TicketDetail = () => {
   const dateCreated = new Date().toLocaleDateString(); // Use
   return (
     <div className="container mx-auto py-14">
-      <div className="pdf-ticket mx-auto w-[1028px] text-dark">
+      <div className="pdf-ticket mx-auto w-[100%] max-w-[1028px] text-dark max-lg:">
         <h1 className="flex bg-red p-6 text-xl text-white">
           <img src="/logo.svg" alt="logo" className="pr-2" />
           TickTicketing
         </h1>
         <div className="invoice-wrapper p-6">
           <h3 className="mb-3 text-2xl font-semibold">Invoice</h3>
-          <div className="flex justify-between">
+          <div className="flex justify-between max-sm:block space-y-2">
             <ul>
               <li>
                 <p className="capitalize">
@@ -88,7 +88,7 @@ const TicketDetail = () => {
             </ul>
           </div>
           <div className="table-wrapper rounded-xl border">
-            <table className="w-full text-left">
+            <table className="w-full text-left max-sm:block max-sm:overflow-x-auto max-sm:whitespace-nowrap">
               <thead>
                 <tr>
                   <th>#</th>
@@ -113,7 +113,7 @@ const TicketDetail = () => {
                 <tr className="border-t">
                   <td
                     colSpan="7"
-                    className="!pb-10 !pt-6 text-right !text-xl !font-semibold"
+                    className="!pb-10 !pt-6 text-right !text-xl !font-semibold max-sm:text-left"
                   >
                     Invoice Total: USD $
                     {location.state?.additionalData?.finalTotal}
@@ -128,7 +128,7 @@ const TicketDetail = () => {
           {Array.from({ length: location.state?.ticketData?.quantity }).map(
             (_, index) => (
               <li key={index} className="boxed mt-6 pt-6">
-                <div className="flex w-[500px] flex-wrap gap-5 border bg-white p-5">
+                <div className="flex w-[100%] max-w-[500px] flex-wrap gap-5 border bg-white p-5">
                   <figure className="h-[120px] w-[110px] overflow-hidden rounded-xl">
                     <img
                       src={location.state?.ticketData?.poster}

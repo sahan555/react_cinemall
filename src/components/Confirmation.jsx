@@ -67,7 +67,7 @@ const Confirmation = () => {
 
   return (
     <>
-      <div className="breadcrumbs bg-dark-second py-2">
+      <div className="breadcrumbs bg-dark-second py-2 max-lg:px-6">
         <div className="container mx-auto">
           <ul className="flex flex-wrap py-2 text-base text-sm">
             <li>
@@ -90,7 +90,7 @@ const Confirmation = () => {
           </ul>
         </div>
       </div>
-      <div className="container mx-auto py-14">
+      <div className="container mx-auto py-14 max-lg:px-6">
         <h1 className="mb-10 border-b border-b-grey pb-3 text-2xl font-semibold">
           Order Confirmation
         </h1>
@@ -104,8 +104,8 @@ const Confirmation = () => {
           }}
         >
           <Form className="confirm-form">
-            <div className="movies-wrapper flex items-baseline space-x-8 max-sm:flex-wrap">
-              <div className="order-details w-4/6 rounded-lg border border-grey bg-dark-second p-6 ">
+            <div className="movies-wrapper flex items-baseline space-x-8 max-sm:flex-wrap max-lg:block max-lg:space-x-0 max-lg:space-y-8">
+              <div className="order-details w-4/6 rounded-lg border border-grey bg-dark-second p-6 max-lg:w-full">
                 <h3 className="text-xl">Information</h3>
 
                 <div className="w-full">
@@ -123,7 +123,7 @@ const Confirmation = () => {
                   />
                 </div>
                 <div className="flex gap-6 max-sm:flex-wrap">
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full">
                     <label htmlFor="email">Email *</label>
                     <Field
                       type="email"
@@ -138,7 +138,7 @@ const Confirmation = () => {
                     />
                   </div>
 
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full">
                     <label htmlFor="address">Address *</label>
                     <Field type="text" id="address" name="address" />
                     <ErrorMessage
@@ -149,7 +149,7 @@ const Confirmation = () => {
                   </div>
                 </div>
                 <div className="flex gap-6 max-sm:flex-wrap">
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full">
                     <label htmlFor="country">Country *</label>
                     <Field as="select" id="country" name="country">
                       <option value="" disabled>
@@ -165,17 +165,17 @@ const Confirmation = () => {
                       component="div"
                     />
                   </div>
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full ">
                     <label htmlFor="state">State</label>
                     <Field type="text" id="state" name="state" />
                   </div>
                 </div>
                 <div className="flex gap-6 max-sm:flex-wrap">
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full">
                     <label htmlFor="city">City</label>
                     <Field type="text" id="city" name="city" />
                   </div>
-                  <div className="w-6/12">
+                  <div className="w-6/12 max-sm:w-full">
                     <label htmlFor="zipcode">Zip/Post code *</label>
                     <Field type="number" id="zipcode" name="zipcode" />
                     <ErrorMessage
@@ -186,7 +186,7 @@ const Confirmation = () => {
                   </div>
                 </div>
               </div>
-              <div className=" w-2/6 rounded-lg border border-grey bg-dark-second p-6">
+              <div className=" w-2/6 rounded-lg border border-grey bg-dark-second p-6  max-lg:w-4/6 max-sm:w-full">
                 <h3 className="pb-4 text-2xl font-semibold capitalize">
                   Checkout Summary
                 </h3>

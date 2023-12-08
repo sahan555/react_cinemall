@@ -11,9 +11,9 @@ const Search = ({ name, type }) => {
   useEffect(() => {
     const fetchData = () => {
       const url = `${apiUrl}?s=${name}&apikey=${apiKey}&type=${type}`;
-      const script = document.createElement('script');
+      const script = document.createElement("script");
       script.src = `${url}&callback=handleJsonpResponse`;
-  
+
       // Define a global callback function
       window.handleJsonpResponse = (response) => {
         setData(response.Search);
@@ -22,11 +22,11 @@ const Search = ({ name, type }) => {
           script.parentNode.removeChild(script);
         }
       };
-  
+
       // Append the script to the document.head
       document.head.appendChild(script);
     };
-  
+
     fetchData();
   }, [name, type]);
 
@@ -34,7 +34,7 @@ const Search = ({ name, type }) => {
 
   return (
     <>
-      <div className="movies-wrapper grid grid-cols-4 gap-8 gap-y-8">
+      <div className="movies-wrapper grid lg:grid-cols-4 gap-8 gap-y-8 max-sm:grid-cols-1 md:grid-cols-3  max-lg:px-6">
         {data?.map((data) => (
           <div className="movies-box" key={data.imdbID}>
             <Link to={`/details/${data.imdbID}`}>

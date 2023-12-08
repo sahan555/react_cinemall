@@ -4,13 +4,12 @@ import axiosJsonp from "axios-jsonp";
 import { MdOutlineDateRange } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
 
-
 const apiKey = "3785d7ed";
 
 const MovieDetails = () => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
- 
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -30,7 +29,6 @@ const MovieDetails = () => {
 
     fetchMovieDetails();
   }, [id]);
-
 
   const [ticketQuantity, setTicketQuantity] = useState(1);
   const [basePrice, setBasePrice] = useState(400);
@@ -97,7 +95,7 @@ const MovieDetails = () => {
   return (
     <>
       <div className="container mx-auto">
-        <div className="movies-wrapper gap- gap-y- grid grid-cols-4 place-content-between py-14">
+        <div className="movies-wrapper  grid grid-cols-4 place-content-between py-14 max-lg:px-6 max-lg:grid-cols-3 max-sm:block max-sm:grid-cols-1">
           <div className="movies-box" key={movie.imdbID}>
             <figure className="relative mb-6 h-[320px] overflow-hidden rounded-xl">
               <img
@@ -116,7 +114,7 @@ const MovieDetails = () => {
               <li className="list-item text-xs ">{movie.Year}</li>
             </ul>
           </div>
-          <div className="col-start-3 col-end-5 ml-auto w-full max-w-md bg-dark-second p-6">
+          <div className="col-start-3 col-end-5 ml-auto w-full max-w-md bg-dark-second p-6 max-lg:col-start-2 max-lg:col-end-4 max-sm:mt-5">
             <h3 className="pb-4 text-2xl font-semibold capitalize">
               {movie.Type} Details
             </h3>
