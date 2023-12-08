@@ -1,31 +1,36 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
+import axiosJsonp from "axios-jsonp";
 import { MdOutlineDateRange } from "react-icons/md";
 import { IoLocationOutline } from "react-icons/io5";
+
 
 const apiKey = "3785d7ed";
 
 const MovieDetails = () => {
   const { id } = useParams(); // Get the movie ID from the URL
   const [movie, setMovie] = useState(null);
+ 
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://cors-anywhere.herokuapp.com/https://www.omdbapi.com/?i=${id}&apikey=${apiKey}`, {
-          mode: "cors",
-          method: "GET",
-          headers: {
-            "Access-Control-Allow-Origin": "*"
+        const response = await axiosJsonp({
+          url: `https://www.omdbapi.com/`,
+          params: {
+            i: id,
+            apikey: apiKey,
           },
         });
-        const json = await response.json();
-        setMovie(json);
+
+        setMovie(response.data);
       } catch (error) {
         console.error("Error fetching movie details:", error);
       }
     };
+
     fetchMovieDetails();
   }, [id]);
+
 
   const [ticketQuantity, setTicketQuantity] = useState(1);
   const [basePrice, setBasePrice] = useState(400);

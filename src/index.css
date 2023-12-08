@@ -110,7 +110,7 @@
   .pdf-ticket .ticket-box .boxed::before {
     top: -11px;
     content: "";
-    background-image: url("cut.svg");
+    background-image: url("./cut.svg");
     width: 24px;
     position: absolute;
     height: 24px;
