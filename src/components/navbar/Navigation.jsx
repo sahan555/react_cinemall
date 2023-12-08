@@ -4,7 +4,7 @@ import { CiMenuBurger } from "react-icons/ci";
 import { RxCross1 } from "react-icons/rx";
 
 const Navigation = () => {
-  const [isMenuVisible, setMenuVisibility] = useState(window.innerWidth > 768);
+  const [isMenuVisible, setMenuVisibility] = useState(window.innerWidth >= 768);
 
   const toggleMenu = () => {
     // Check the window width and add/remove 'overflow-hidden' class accordingly
@@ -16,7 +16,7 @@ const Navigation = () => {
 
   const closeMenu = () => {
     // Close the menu and remove 'overflow-hidden' class when the screen is smaller
-    if (window.innerWidth < 768) {
+    if (window.innerWidth <= 768) {
       document.body.classList.remove("overflow-hidden");
       setMenuVisibility(false);
     }
