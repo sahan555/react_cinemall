@@ -16,7 +16,7 @@ const Navigation = () => {
 
   const closeMenu = () => {
     // Close the menu and remove 'overflow-hidden' class when the screen is smaller
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth < 768) {
       document.body.classList.remove("overflow-hidden");
       setMenuVisibility(false);
     }
