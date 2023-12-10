@@ -67,7 +67,7 @@ const TicketDetail = () => {
     <div className="container mx-auto py-14">
       <div className="pdf-ticket max-lg: mx-auto w-[100%] max-w-[1028px] text-dark">
         <h1 className="flex bg-red p-6 text-xl text-white">
-          <img src="/logo.svg" alt="logo" className="pr-2" />
+          <img src="/logo.svg" alt="logo" className="max-w-sm max-h-5 invert pr-2"  />
           TickTicketing
         </h1>
         <div className="invoice-wrapper p-6">

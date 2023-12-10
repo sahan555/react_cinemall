@@ -62,7 +62,7 @@ const Navigation = () => {
       <nav className="container mx-auto flex flex-wrap items-center gap-12 max-lg:px-6  max-md:relative max-md:py-4">
         <div className="logo">
           <Link to="/" className="flex gap-1 text-xl font-semibold">
-            <img src="/logo.svg" alt="logo" />
+            <img src="/logo.svg" alt="logo" className="max-w-sm max-h-5 invert pr-2" />
             CineMall
           </Link>
         </div>
