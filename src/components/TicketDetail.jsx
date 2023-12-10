@@ -11,11 +11,18 @@ const TicketDetail = () => {
   const downloadPdf = () => {
     const capture = document.querySelector(".pdf-ticket");
     setLoader(true);
+
+    // Use window.scrollY to capture the correct position of the element
+    const componentWidth = capture.offsetWidth;
+    const componentHeight = capture.offsetHeight;
+    console.log(componentWidth);
     html2canvas(capture, {
       allowTaint: true,
       useCORS: true,
       scale: 2,
       dpi: 144,
+      width: componentWidth,
+      height: componentHeight,
     }).then((canvas) => {
       const imgData = canvas.toDataURL("img/png");
       const doc = new jsPDF("p", "mm", "a4");
@@ -42,7 +49,6 @@ const TicketDetail = () => {
       navigate("/");
     }
   }, [location.state, navigate]);
-  console.log(location.state);
 
   const generateRandomId = (length) => {
     const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
@@ -59,14 +65,14 @@ const TicketDetail = () => {
   const dateCreated = new Date().toLocaleDateString(); // Use
   return (
     <div className="container mx-auto py-14">
-      <div className="pdf-ticket mx-auto w-[100%] max-w-[1028px] text-dark max-lg:">
+      <div className="pdf-ticket max-lg: mx-auto w-[100%] max-w-[1028px] text-dark">
         <h1 className="flex bg-red p-6 text-xl text-white">
           <img src="/logo.svg" alt="logo" className="pr-2" />
           TickTicketing
         </h1>
         <div className="invoice-wrapper p-6">
           <h3 className="mb-3 text-2xl font-semibold">Invoice</h3>
-          <div className="flex justify-between max-sm:block space-y-2">
+          <div className="flex justify-between space-y-2 max-sm:block">
             <ul>
               <li>
                 <p className="capitalize">

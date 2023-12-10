@@ -63,7 +63,7 @@ const Navigation = () => {
         <div className="logo">
           <Link to="/" className="flex gap-1 text-xl font-semibold">
             <img src="/logo.svg" alt="logo" />
-            TickTicketing
+            CineMall
           </Link>
         </div>
         <button
